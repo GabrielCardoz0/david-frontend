@@ -89,14 +89,19 @@ export const Forms = () => {
     }
 
     const handleCopyToClipboard = () => {
-        const textToCopy = window.location.href.replace("/home/forms", "") +"/forms/"+ selectedForm.identify; // Combine the current URL with the identify
-        navigator.clipboard.writeText(textToCopy)
-            .then(() => {
-                toast.success("Texto copiado para a área de transferência.");
-            })
-            .catch(() => {
-                toast.error("Erro ao copiar texto para a área de transferência.");
-            });
+        try {
+            const textToCopy = window.location.href.replace("/home/forms", "") +"/forms/"+ selectedForm.identify; // Combine the current URL with the identify
+            navigator.clipboard?.writeText(textToCopy)
+                .then(() => {
+                    toast.success("Texto copiado para a área de transferência.");
+                })
+                .catch(() => {
+                    toast.error("Erro ao copiar texto para a área de transferência.");
+                });
+        } catch (error) {
+            toast.error("Erro ao copiar texto para a área de transferência.");
+            console.log(error);
+        }
     };
 
     return(
