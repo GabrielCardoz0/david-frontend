@@ -91,7 +91,7 @@ export const Forms = () => {
     const handleCopyToClipboard = () => {
         try {
             const textToCopy = window.location.href.replace("/home/forms", "") +"/forms/"+ selectedForm.identify; // Combine the current URL with the identify
-            navigator.clipboard?.writeText(textToCopy)
+            navigator.clipboard.writeText(textToCopy)
                 .then(() => {
                     toast.success("Texto copiado para a área de transferência.");
                 })
