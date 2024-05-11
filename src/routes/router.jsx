@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Login } from "../pages/public/loginPage";
 import { Layout } from "../pages/private/layout";
 import { Dashboard } from "../pages/private/dashboard";
@@ -10,13 +10,20 @@ import FormsTermsConditionsPage from "../pages/public/formsTermsConditionsPage";
 import FormsClientInfosPage from "../pages/public/formsClientInfosPage";
 import FormsServicesPage from "../pages/public/formsServicesPage";
 import FormsSubmitPage from "../pages/public/formsSubmitPage";
+import { useContext } from "react";
+import { UsersContext } from "../contexts/userContext";
 
 export default function Routers() {
     return(
     <BrowserRouter>
         <Routes>
             <Route path="/login" element={<Login/>}/>
-            <Route path="/home" element={<Layout/>}>
+            <Route path="/" element={
+                <ProtectedRouteGuard>
+                    <Layout/>
+                </ProtectedRouteGuard>
+            }>
+
                 <Route path="dashboard" element={<Dashboard/>}/>
                 <Route path="services" element={<Services/>}/>
                 <Route path="colaborators" element={<Colaborators/>}/>
@@ -32,3 +39,25 @@ export default function Routers() {
     </BrowserRouter>
     )
 };
+
+
+function ProtectedRouteGuard({ children }) {
+    const { setToken, verifyToken, token  } = useContext(UsersContext);
+
+    const localToken = localStorage.getItem('token');
+
+    let hasToken = false;
+    
+    if(!token){
+        if(localToken){
+            hasToken = verifyToken(localToken);
+            if(hasToken) setToken(localToken);
+        }
+    }
+
+    if (hasToken) {
+        return <Navigate to="/login" />;
+    }
+
+    return <>{children}</>;
+}

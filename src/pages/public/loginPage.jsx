@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import { LoginApi } from "../../services/loginApi.js";
 import { UsersContext } from "../../contexts/userContext.jsx";
 import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const Login = () => {
     const { setuserInfos, setToken, verifyToken, token } = useContext(UsersContext);
@@ -14,19 +15,20 @@ export const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     
-    
+    /*
+    */
     useEffect(() => {
         const localToken = localStorage.getItem('token');
-
+        
         if(localToken){
             const verify = verifyToken(token);
             const lastPath= location.state?.lastPath;
-            if(verify) return navigate("/home/dashboard");
+            if(verify) return navigate("/dashboard");
         };
 
     }, []);
 
-
+    
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
@@ -34,14 +36,17 @@ export const Login = () => {
             
             if(login.success){
                 setToken(login.data.token);
+
                 localStorage.setItem('token', login.data.token);
+                
                 setuserInfos(login.data.user);
-                return navigate("/home/dashboard");
+                
+                return navigate("/dashboard");
             } else {
-                return alert("Erro ao fazer login.");
+                return toast.error("Erro ao fazer login.");
             };
         } catch (error) {
-            alert("erro ao realizar login.");
+            toast.error("erro ao realizar login.");
         };
     };
 

@@ -12,7 +12,6 @@ import { convertToMoney } from "../../utils";
 import ConfirmModal from "../../componets/confirmationModal";
 
 const NumberPage = ({value, selectedPage, onClick}) => {
-    //alert(selectedPage == value)
     return(<NumberPageContainer className="page" selectedPage={selectedPage === value} onClick={() => onClick(value)}>{value}</NumberPageContainer>);
 }
 
@@ -46,7 +45,7 @@ export const Services = () => {
             }
 
         } catch (error) {
-            alert("Erro ao cadastrar serviço");
+            toast.error("Erro ao cadastrar serviço");
         } finally {
             setShowNewServiceModal(false);
             getServices();

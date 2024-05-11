@@ -90,12 +90,16 @@ export const Forms = () => {
 
     const handleCopyToClipboard = () => {
         try {
-            const textToCopy = window.location.href.replace("/home/forms", "") +"/forms/"+ selectedForm.identify; // Combine the current URL with the identify
+            console.log("01");
+            const textToCopy = window.location.href.replace("/forms", "") +"/forms/"+ selectedForm.identify; // Combine the current URL with the identify
+            console.log("02");
             navigator.clipboard.writeText(textToCopy)
-                .then(() => {
+            .then(() => {
+                    console.log("03");
                     toast.success("Texto copiado para a área de transferência.");
                 })
                 .catch(() => {
+                    console.log("04");
                     toast.error("Erro ao copiar texto para a área de transferência.");
                 });
         } catch (error) {
@@ -211,7 +215,6 @@ const FormsContainer = styled(BaseLayoutContainer)`
     }
 
     .content {
-        //background-color: red;
         width: 100%;
         height: 100%;
         display: flex;
@@ -221,7 +224,6 @@ const FormsContainer = styled(BaseLayoutContainer)`
         height: 100%;
         width: 100%;
         padding: 10px;
-        //border: 1px solid blue;
     }
 
     .left {

@@ -15,7 +15,7 @@ export const ServicesContextProvider = ({ children }) => {
                 setServices(res.data.services);
                 setPages(res.data.pages);
             } else {
-                alert("Erro no get")
+                console.log("Erro no get")
             }
         } catch (error) {
             console.log("Erro no try catch");

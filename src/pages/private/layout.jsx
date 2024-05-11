@@ -14,6 +14,7 @@ export const Layout = () => {
     const location = useLocation();
     const [showExitModal, setShowExitModal] = useState(false);
 
+    /*
     useEffect(() => {
         if(token){
             const verify = verifyToken(token);
@@ -23,7 +24,8 @@ export const Layout = () => {
             return navigate("/login", { state: { lastPath: location.pathname }});
         }
     }, [location.pathname, token]);
-
+    */
+    
     const handleLogout = () => {
         localStorage.removeItem("token");
         navigate("/login");

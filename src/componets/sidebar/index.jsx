@@ -5,10 +5,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { GlobalContext } from "../../contexts/globalContext";
 
 const routes = [
-    {path: "/home/dashboard", name: "Dashboard"},
-    {path: "/home/services", name: "Serviços"},
-    {path: "/home/colaborators", name: "Colaboradores"},
-    {path: "/home/forms", name: "Formulários"},
+    {path: "/dashboard", name: "Dashboard"},
+    {path: "/services", name: "Serviços"},
+    {path: "/colaborators", name: "Colaboradores"},
+    {path: "/forms", name: "Formulários"},
 ]
 
 export const Sidebar = () => {
@@ -31,7 +31,6 @@ export const Sidebar = () => {
                     <p
                     style={{ fontSize: "10px", borderRadius: "50%", padding: "3px", position: "absolute", right: "15px", top: "-5px"}}
                     >{newColaborators.length}</p>}
-
 
                     <span>{route.name}</span>
                 </SidebarRouteOption>
