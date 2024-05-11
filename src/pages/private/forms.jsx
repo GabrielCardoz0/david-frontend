@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { convertToMoney, formatDate } from "../../utils";
 import ConfirmModal from "../../componets/confirmationModal";
 import ClipboardJS from 'clipboard';
+import CopyToClipboard from "react-copy-to-clipboard";
 
 
 export const Forms = () => {
@@ -90,57 +91,6 @@ export const Forms = () => {
         getForms(1, -1, searchForm);
     };
 
-
-    const handleCopyToClipboard2 = () => {
-        const textToCopy = window.location.href.replace("/forms", "") +"/forms/"+ selectedForm.identify; // Combine the current URL with the identify
-        
-        if (navigator.clipboard) {
-            navigator.clipboard.writeText(textToCopy)
-            .then(() => {
-                toast.success("Texto copiado para a área de transferência.");
-                alert("here1")
-            })
-            .catch(() => {
-                alert("here2")
-                toast.error("Erro ao copiar texto para a área de transferência.");
-            });
-        } else {
-            // Fallback para navegadores que não suportam a API do Clipboard
-            alert("here3")
-            const tempInput = document.createElement("input");
-            tempInput.value = textToCopy;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            const clipboard = new ClipboardJS(tempInput);
-            clipboard.on('success', function(e) {
-                alert("here4")
-                toast.success("Texto copiado para a área de transferência.");
-                e.clearSelection();
-            });
-            clipboard.on('error', function(e) {
-                alert("here5")
-                toast.error("Erro ao copiar texto para a área de transferência.");
-            });
-            document.body.removeChild(tempInput);
-        }
-    };
-
-    const handleCopyToClipboard = () => {
-        try {
-            const textToCopy = window.location.href.replace("/forms", "") +"/forms/"+ selectedForm.identify; // Combine the current URL with the identify
-            navigator.clipboard && navigator.clipboard.writeText(textToCopy)
-            .then(() => {
-                toast.success("Texto copiado para a área de transferência.");
-            })
-            .catch(() => {
-                toast.error("Erro ao copiar texto para a área de transferência.");
-            });
-        } catch (error) {
-            toast.error("Erro ao copiar texto para a área de transferência.");
-            console.log(error);
-        }
-    };
-
     return(
         <>
         {showDeleteModal && <ConfirmModal onClose={() => setShowDeleteModal(false) } onConfirm={() => handleDeleteForm()}/>}
@@ -195,7 +145,11 @@ export const Forms = () => {
                             <p>{formatDate(selectedForm.created_at)}</p>
                         </div>
                         <div className="formInfoItem" style={{ display: "flex", gap: "30px" }}>
-                            <p style={{ cursor: "pointer" }} onClick={() => handleCopyToClipboard2()}>Copiar</p>
+
+                            <CopyToClipboard text={window.location.href.replace("/forms", "") +"/forms/"+ selectedForm.identify} onCopy={() => toast.success("Texto copiado para a área de transferência.")}>
+                            <p style={{ cursor: "pointer" }}>Copiar</p>
+                            </CopyToClipboard>
+
                             <p className="deleteForm" onClick={() => setShowDeleteModal(true)}>Deletar</p>
                         </div>
                     </div>
