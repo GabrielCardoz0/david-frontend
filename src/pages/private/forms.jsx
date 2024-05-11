@@ -98,22 +98,27 @@ export const Forms = () => {
             navigator.clipboard.writeText(textToCopy)
             .then(() => {
                 toast.success("Texto copiado para a área de transferência.");
+                alert("here1")
             })
             .catch(() => {
+                alert("here2")
                 toast.error("Erro ao copiar texto para a área de transferência.");
             });
         } else {
             // Fallback para navegadores que não suportam a API do Clipboard
+            alert("here3")
             const tempInput = document.createElement("input");
             tempInput.value = textToCopy;
             document.body.appendChild(tempInput);
             tempInput.select();
             const clipboard = new ClipboardJS(tempInput);
             clipboard.on('success', function(e) {
+                alert("here4")
                 toast.success("Texto copiado para a área de transferência.");
                 e.clearSelection();
             });
             clipboard.on('error', function(e) {
+                alert("here5")
                 toast.error("Erro ao copiar texto para a área de transferência.");
             });
             document.body.removeChild(tempInput);
