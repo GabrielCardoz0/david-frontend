@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import loginImage from "../../assets/images/undraw_undraw_undraw_undraw_undraw_walking_together_7ulo_m7i2_l2pa_rcwe_-1-_apsm 1.png";
 import { useContext, useEffect } from "react";
 import { FormsContext } from "../../contexts/formsContext";
+import beautytagLogo from "../../assets/images/beautytag-logo.jpeg";
 
 export default function FormsWelcomePage(params) {
 
@@ -19,9 +20,12 @@ export default function FormsWelcomePage(params) {
     return(
         <WelcomePageContainer>
             <div className="maxWidth">
-                <div className="welcomeSpan">Bem vindo!</div>
-                <img className="welcomeImage" src={loginImage} alt=""/>
-                <InputButton text={"Responder formulário"} onClick={() => navigate(location.pathname+"/terms")} disabled={formServices.length < 0}/>
+                <div>
+                    <h1 className="welcomeSpan">Bem-vindo, colaborador!</h1>
+                    <span style={{ lineHeight: "1.5" }}>Cadastre-se e descubra descontos exclusivos em estética e bem-estar, especialmente para você.</span>
+                </div>
+                <img className="welcomeImage" src={beautytagLogo} alt=""/>
+                <InputButton text={"Cadastre-se"} onClick={() => navigate(location.pathname+"/terms")} disabled={formServices.length < 0}/>
             </div>
         </WelcomePageContainer>
     );
@@ -41,6 +45,7 @@ height: 100vh;
 .welcomeSpan {
     font-size: 24px;
     font-weight: 600;
+    margin-bottom: 10px;
 }
 
 .image {

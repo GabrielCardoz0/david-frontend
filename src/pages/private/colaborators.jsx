@@ -296,8 +296,8 @@ gap: 20px;
 
 .item {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    height: 30px;
+    grid-template-columns: 2fr 2fr 1fr 1fr 1fr 1fr 1fr;
+    text-align: left;
     align-items: center;
     padding: 5px;
     cursor: default;

@@ -6,6 +6,7 @@ import { BiExit } from "react-icons/bi";
 import { useContext, useEffect, useState } from "react";
 import { UsersContext } from "../../contexts/userContext";
 import { ConfirmModal } from "../../componets/defaultModal";
+import beautytagLogo from "../../assets/images/beautytag-logo.jpeg";
 
 
 export const Layout = () => {
@@ -40,7 +41,8 @@ export const Layout = () => {
                 <div className="topbarOutletContainer">
                     {showExitModal && <ConfirmModal message={"Deseja sair?"} onClose={() => setShowExitModal(false)}  onConfirm={() => handleLogout()}/>}
                     <div className="topbar">
-                        Painel adminstrativo
+                        <img src={beautytagLogo} alt="" style={{ width: "50px", height:"auto", marginRight: "10px" }}/>
+                        <span>Painel adminstrativo</span>
                         <BiExit className="exitIcon" onClick={() => setShowExitModal(true)}/>
                     </div>
                     <div className="outletContainer">

@@ -7,6 +7,7 @@ import { convertToMoney } from "../../utils";
 import { toast } from "react-toastify";
 import { SubmitColaboratorPlan } from "../../services/formsApi";
 import { useLocation, useNavigate } from "react-router-dom";
+import beautytagLogo from "../../assets/images/beautytag-logo.jpeg";
 
 export default function FormsSubmitPage(params) {
     const { formServices, usersInfos } = useContext(FormsContext);
@@ -73,7 +74,10 @@ export default function FormsSubmitPage(params) {
     return(
         <FormDefaultContainer>
             <SquareForm border={true}>
-                <h1 style={{ fontWeight: "600", fontSize:"16px" }}>Formulário personalizado</h1>
+                <div style={{ display: "flex" }}>
+                    <img src={beautytagLogo} alt="" style={{ width: "20px", marginRight: "10px", height: "auto", objectFit: "cover" }}/>
+                    <h1 style={{ fontWeight: "600", fontSize:"18px" }}>Formulário personalizado</h1>
+                </div>
                 <br/>
                 {/*<p style={{ fontSize:"12px" }}>Preencha as informações para prosseguir</p>*/}
                 <p style={{ fontSize:"12px" }}>Confirme os serviços selecionados</p>

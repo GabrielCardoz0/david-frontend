@@ -6,6 +6,7 @@ import { InputButton } from "../../componets/inputs";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { FormsContext } from "../../contexts/formsContext";
+import beautytagLogo from "../../assets/images/beautytag-logo.jpeg";
 
 export default function FormsClientInfosPage(params) {
     const { usersInfos, setUsersInfos } = useContext(FormsContext);
@@ -25,8 +26,11 @@ export default function FormsClientInfosPage(params) {
     return(
         <FormDefaultContainer>
             <SquareForm border={true}>
-                <h1 style={{ fontWeight: "600", fontSize:"16px" }}>Formulário personalizado</h1>
-                <br/>
+
+                <div style={{ display: "flex" }}>
+                    <img src={beautytagLogo} alt="" style={{ width: "20px", marginRight: "10px", height: "auto", objectFit: "cover" }}/>
+                    <h1 style={{ fontWeight: "600", fontSize:"18px" }}>Formulário personalizado</h1>
+                </div>                <br/>
                 {/*<p style={{ fontSize:"12px" }}>Preencha as informações para prosseguir</p>*/}
                 <p style={{ fontSize:"12px" }}>Cadastro de informações pessoais.</p>
             </SquareForm>

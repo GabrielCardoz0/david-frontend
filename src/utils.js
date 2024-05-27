@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 
 export function formatDate(date, format) {
-    return dayjs(date || Date.now()).format('DD-MM-YYYY HH:mm' || format);
+    return dayjs(date || Date.now()).format('DD/MM/YYYY HH:mm' || format);
 };
 
 export function convertToMoney(value) {

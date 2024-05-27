@@ -212,9 +212,9 @@ gap: 20px;
 
 .service {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    height: 30px;
+    grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     align-items: center;
+    text-align: left;
     padding: 5px;
     cursor: default;
     

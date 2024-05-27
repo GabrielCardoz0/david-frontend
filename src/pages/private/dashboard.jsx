@@ -135,7 +135,7 @@ export const Dashboard = () => {
 
                             <div style={{ width: "100%" }}>
                                 <p style={{ color: Colors.c }}>Data de nascimento</p>
-                                <p style={{ fontSize: "18px", height: "15px" }}>{selectedColab.birthday}</p>
+                                <p style={{ fontSize: "18px", height: "15px" }}>{selectedColab.birthday.replace(/(\d{4})-(\d{2})-(\d{2})/, "$3/$2/$1")}</p>
                             </div>
 
                             <div style={{ width: "100%" }}>

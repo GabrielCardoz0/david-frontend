@@ -6,6 +6,7 @@ import { useContext, useEffect } from "react";
 import { FormsContext } from "../../contexts/formsContext";
 import { convertToMoney } from "../../utils";
 import { toast } from "react-toastify";
+import beautytagLogo from "../../assets/images/beautytag-logo.jpeg";
 
 export default function FormsServicesPage(params) {
     const { formServices, getFormServices, setFormServices, usersInfos } = useContext(FormsContext);
@@ -71,7 +72,11 @@ export default function FormsServicesPage(params) {
     <FormDefaultContainer>
 
         <SquareForm border={true}>
-            <h1 style={{ fontWeight: "600", fontSize:"16px" }}>Formulário personalizado</h1>
+
+            <div style={{ display: "flex" }}>
+                <img src={beautytagLogo} alt="" style={{ width: "20px", marginRight: "10px", height: "auto", objectFit: "cover" }}/>
+                <h1 style={{ fontWeight: "600", fontSize:"18px" }}>Formulário personalizado</h1>
+            </div>
             <br/>
             {/*<p style={{ fontSize:"12px" }}>Preencha as informações para prosseguir</p>*/}
             <p style={{ fontSize:"12px" }}>Selecione a frequência de cada serviço que deseja adicionar ao pacote.</p>
