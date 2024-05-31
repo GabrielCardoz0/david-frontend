@@ -160,7 +160,7 @@ export const Forms = () => {
                             <div key={services.id} className="formServiceItem">
                                 <p>{services.name}</p>
                                 <p>Preço: {convertToMoney(services.base_price)}</p>
-                                <p>Gênero: {services.genre}</p>
+                                <p>Público: {services.genre}</p>
                             </div>
                             );
                         })}

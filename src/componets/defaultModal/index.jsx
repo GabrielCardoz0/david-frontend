@@ -70,7 +70,7 @@ export const NewServiceModal = ({ onClose, onConfirm }) => {
 
                         <TxtInput inputStyle={{ border: `2px solid ${Colors.c}`, fontSize: "16px" }} label={"Frequência"} required={true} onChange={handleServiceDFrequencyInput} placeholder={"Ex.: 1x semana; 2x semana "}/>
 
-                        <SelectInput inputStyle={{ border: `2px solid ${Colors.c}`, fontSize: "16px" }} label={"Gênero"} required={true} onChange={handleServiceGenre}/>
+                        <SelectInput inputStyle={{ border: `2px solid ${Colors.c}`, fontSize: "16px" }} label={"Público"} required={true} onChange={handleServiceGenre}/>
 
                     </div>
 
@@ -150,7 +150,7 @@ export const EditServiceModal = ({ onClose, onConfirm, service }) => {
 {/* 
                         <TxtInput inputStyle={{ border: `2px solid ${Colors.c}`, fontSize: "16px" }} label={"Frequência"} required={true} onChange={handleServiceDFrequencyInput} placeholder={"Ex.: 1x semana; 2x semana "}/> */}
 
-                        {/* <SelectInput inputStyle={{ border: `2px solid ${Colors.c}`, fontSize: "16px" }} label={"Gênero"} required={true} onChange={handleServiceGenre}/> */}
+                        {/* <SelectInput inputStyle={{ border: `2px solid ${Colors.c}`, fontSize: "16px" }} label={"Público"} required={true} onChange={handleServiceGenre}/> */}
 
                     </div>
 

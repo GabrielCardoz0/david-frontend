@@ -29,7 +29,7 @@ export default function FormsClientInfosPage(params) {
 
                 <div style={{ display: "flex" }}>
                     <img src={beautytagLogo} alt="" style={{ width: "20px", marginRight: "10px", height: "auto", objectFit: "cover" }}/>
-                    <h1 style={{ fontWeight: "600", fontSize:"18px" }}>Formulário personalizado</h1>
+                    <h1 style={{ fontWeight: "600", fontSize:"18px" }}>Cadastro do colaborador</h1>
                 </div>                <br/>
                 {/*<p style={{ fontSize:"12px" }}>Preencha as informações para prosseguir</p>*/}
                 <p style={{ fontSize:"12px" }}>Cadastro de informações pessoais.</p>
@@ -64,7 +64,7 @@ export default function FormsClientInfosPage(params) {
                 </SquareForm>
                 
                 <SquareForm>
-                    <h1 style={{ fontWeight: "600", fontSize:"14px" }}>Gênero</h1>
+                    <h1 style={{ fontWeight: "600", fontSize:"14px" }}>Público</h1>
                     <div className="spaceText"></div>
                     <p style={{ fontSize:"12px" }}>Selecione</p>
                     <div className="spaceText"></div>

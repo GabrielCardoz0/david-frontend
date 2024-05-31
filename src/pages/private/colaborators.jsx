@@ -78,7 +78,7 @@ export const Colaborators = () => {
                 <div className="item fields">
                     <span>Nome do colaborador</span>
                     <span>Formulário</span>
-                    <span>Gênero</span>
+                    <span>Público</span>
                     <span>Serviços</span>
                     <span>Valor</span>
                     <span>Empresa</span>

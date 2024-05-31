@@ -119,7 +119,7 @@ export const Dashboard = () => {
                             </div>
 
                             <div style={{ width: "100%" }}>
-                                <p style={{ color: Colors.c }}>Gênero</p>
+                                <p style={{ color: Colors.c }}>Público</p>
                                 <p style={{ fontSize: "18px", height: "15px" }}>{selectedColab.genre || "Não informado"}</p>
                             </div>
 

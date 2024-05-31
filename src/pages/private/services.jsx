@@ -126,7 +126,7 @@ export const Services = () => {
                     <span>Preço(colab)</span>
                     <span>Repasse</span>
                     <span>Lucro</span>
-                    <span>Gênero</span>
+                    <span>Público</span>
                     <span>Qtd. frequência</span>
                     <span className="actions">Ações</span>
                 </div>

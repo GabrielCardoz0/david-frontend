@@ -29,7 +29,7 @@ export default function FormsTermsConditionsPage() {
             <SquareForm border={true}>
                 <div style={{ display: "flex" }}>
                     <img src={beautytagLogo} alt="" style={{ width: "20px", marginRight: "10px", height: "auto", objectFit: "cover" }}/>
-                    <h1 style={{ fontWeight: "600", fontSize:"18px" }}>Formulário personalizado</h1>
+                    <h1 style={{ fontWeight: "600", fontSize:"18px" }}>Cadastro do colaborador</h1>
                 </div>
                 <br/>
                     <p style={{ fontSize:"12px" }}>Formulário para cadastro de planos personalizados com a Beauty TAG ®</p>
