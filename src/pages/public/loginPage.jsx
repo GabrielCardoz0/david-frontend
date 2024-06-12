@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import baseColors from "../../assets/colors.js";
-import loginImage from "../../assets/images/undraw_undraw_undraw_undraw_undraw_walking_together_7ulo_m7i2_l2pa_rcwe_-1-_apsm 1.png";
+//import loginImage from "../../assets/images/undraw_undraw_undraw_undraw_undraw_walking_together_7ulo_m7i2_l2pa_rcwe_-1-_apsm 1.png";
 import { InputButton, TxtInput } from "../../componets/inputs/index.jsx";
 import { useContext, useEffect, useState } from "react";
 import { LoginApi } from "../../services/loginApi.js";
 import { UsersContext } from "../../contexts/userContext.jsx";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import loginImage from "../../assets/images/beautytag-logo.jpeg";
+
 
 export const Login = () => {
     const { setuserInfos, setToken, verifyToken, token } = useContext(UsersContext);

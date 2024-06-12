@@ -124,8 +124,8 @@ export const Services = () => {
                     <span>Serviço</span>
                     <span>Preço(base)</span>
                     <span>Preço(colab)</span>
-                    <span>Repasse</span>
                     <span>Lucro</span>
+                    <span>Repasse</span>
                     <span>Público</span>
                     <span>Qtd. frequência</span>
                     <span className="actions">Ações</span>

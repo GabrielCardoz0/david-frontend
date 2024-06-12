@@ -77,7 +77,7 @@ export const NewServiceModal = ({ onClose, onConfirm }) => {
                     <div className="calcs">
                         <p>Preço para o colaborador: R$ {(((serviceInputValues.serviceBasePrice) * (1 - serviceInputValues.serviceColabPercent/100)) || 0).toFixed(2) ?? "0.00"}</p>
 
-                        <p>Preço para o fornecedor: R$ {((((serviceInputValues.serviceBasePrice) * (1 - serviceInputValues.serviceColabPercent/100)) * (1 - serviceInputValues.serviceRepassPercent/100)) || 0).toFixed(2) ?? "0.00"}</p>
+                        <p>Preço para o parceiro: R$ {((((serviceInputValues.serviceBasePrice) * (1 - serviceInputValues.serviceColabPercent/100)) * (1 - serviceInputValues.serviceRepassPercent/100)) || 0).toFixed(2) ?? "0.00"}</p>
                         
                         <p>Lucro: R$ {((((serviceInputValues.serviceBasePrice) * (1 - serviceInputValues.serviceColabPercent/100)) * (serviceInputValues.serviceRepassPercent/100)) || 0).toFixed(2) ?? "0.00"}</p>
                     </div>
@@ -157,7 +157,7 @@ export const EditServiceModal = ({ onClose, onConfirm, service }) => {
                     <div className="calcs">
                         <p>Preço para o colaborador: R$ {(((serviceInputValues.serviceBasePrice) * (1 - serviceInputValues.serviceColabPercent/100)) || 0).toFixed(2) ?? "0.00"}</p>
 
-                        <p>Preço para o fornecedor: R$ {((((serviceInputValues.serviceBasePrice) * (1 - serviceInputValues.serviceColabPercent/100)) * (1 - serviceInputValues.serviceRepassPercent/100)) || 0).toFixed(2) ?? "0.00"}</p>
+                        <p>Preço para o parceiro: R$ {((((serviceInputValues.serviceBasePrice) * (1 - serviceInputValues.serviceColabPercent/100)) * (1 - serviceInputValues.serviceRepassPercent/100)) || 0).toFixed(2) ?? "0.00"}</p>
                         
                         <p>Lucro: R$ {((((serviceInputValues.serviceBasePrice) * (1 - serviceInputValues.serviceColabPercent/100)) * (serviceInputValues.serviceRepassPercent/100)) || 0).toFixed(2) ?? "0.00"}</p>
                     </div>
