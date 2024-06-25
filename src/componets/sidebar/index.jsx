@@ -3,6 +3,7 @@ import Colors from "../../assets/colors";
 import { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { GlobalContext } from "../../contexts/globalContext";
+import { toast } from "react-toastify";
 
 const routes = [
     {path: "/dashboard", name: "Dashboard"},
@@ -23,6 +24,15 @@ export const Sidebar = () => {
         return navigate(path);
     }
 
+    const handleDownloadBackup = async () => {
+        try {
+            window.open("http://localhost:4000/backup", "_blank");
+            
+        } catch (error) {
+            toast.error("Erro ao baixar backup, tente novamente mais tarde.");
+        }
+    };
+
     return(
         <SidebarContainer>
             {routes.map((route, index) => ( 
@@ -35,9 +45,31 @@ export const Sidebar = () => {
                     <span>{route.name}</span>
                 </SidebarRouteOption>
             ))}
+
+            <DownloadBackupButton onClick={handleDownloadBackup}>
+                <span>Baixar backup</span>
+            </DownloadBackupButton>
+            
         </SidebarContainer>
     );
 }
+
+const DownloadBackupButton = styled.div`
+    font-weight: 600;
+    font-size: 16px;
+    width: 100%;
+    padding: 0 30px;
+    box-sizing: border-box;
+    color: ${({selected}) => selected ? Colors.a : Colors.c };
+    position: relative;
+    
+    span {
+        cursor: pointer;    
+        &:hover{
+            opacity: 0.4;
+        }
+    }
+`;
 
 const SidebarContainer = styled.div`
     width: 180px;
@@ -68,5 +100,5 @@ const SidebarRouteOption = styled.div`
         &:hover{
             opacity: 0.4;
         }
-        }
+    }
 `;
