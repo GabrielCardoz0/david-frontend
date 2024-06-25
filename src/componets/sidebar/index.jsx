@@ -26,7 +26,7 @@ export const Sidebar = () => {
 
     const handleDownloadBackup = async () => {
         try {
-            window.open("http://localhost:4000/backup", "_blank");
+            window.open(process.env.REACT_APP_API_URL + "/backup", "_blank");
             
         } catch (error) {
             toast.error("Erro ao baixar backup, tente novamente mais tarde.");
