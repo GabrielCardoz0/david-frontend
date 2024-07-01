@@ -20,6 +20,11 @@ export const NewServiceModal = ({ onClose, onConfirm }) => {
         return setServiceInputValues({ ...serviceInputValues, serviceName: e.target.value });
     };
 
+    const handleServiceDescriptionInput = (e) => {
+        e.preventDefault();
+        return setServiceInputValues({ ...serviceInputValues, serviceDescription: e.target.value });
+    };
+
     const handleServiceDFrequencyInput = (e) => {
         e.preventDefault();
         return setServiceInputValues({ ...serviceInputValues, serviceFrequency: e.target.value });
@@ -60,7 +65,9 @@ export const NewServiceModal = ({ onClose, onConfirm }) => {
 
                 <form onSubmit={handleSubmit} className="newServiceForm">
                     <div className="newServiceFormGrid">
-                        <TxtInput inputStyle={{ border: `2px solid ${Colors.c}`, fontSize: "16px" }} label={"Nome do serviço"} required={true} onChange={handleServiceNameInput} placeholder={"João Gabriel"}/>
+                        <TxtInput inputStyle={{ border: `2px solid ${Colors.c}`, fontSize: "16px" }} label={"Nome do serviço"} required={false} onChange={handleServiceNameInput} placeholder={"João Gabriel"}/>
+
+                        <TxtInput inputStyle={{ border: `2px solid ${Colors.c}`, fontSize: "16px" }} label={"Descrição do serviço"} required={true} onChange={handleServiceDescriptionInput} placeholder={"Descrição do produto"}/>
 
                         <TxtInput inputStyle={{ border: `2px solid ${Colors.c}`, fontSize: "16px" }} label={"Preço base"} required={true} onChange={handleServiceBasePriceInput} placeholder={"R$ 30,00"} value={serviceInputValues.serviceBasePrice ? "R$ "+serviceInputValues.serviceBasePrice : ""}/>
 
@@ -99,6 +106,7 @@ export const EditServiceModal = ({ onClose, onConfirm, service }) => {
 
     const [serviceInputValues, setServiceInputValues] = useState({
         serviceName: service.name,
+        serviceDescription: service.description || "",
         serviceBasePrice: service.base_price,
         serviceColabPercent: service.colaborator_percent,
         serviceRepassPercent: service.repass_percent,
@@ -110,9 +118,13 @@ export const EditServiceModal = ({ onClose, onConfirm, service }) => {
         return setServiceInputValues({ ...serviceInputValues, serviceName: e.target.value });
     };
 
+    const handleServiceDescriptionInput = (e) => {
+        e.preventDefault();
+        return setServiceInputValues({ ...serviceInputValues, serviceDescription: e.target.value });
+    };
+
     const handleServiceBasePriceInput = (e) => {
         e.preventDefault();
-        
         return setServiceInputValues({ ...serviceInputValues, serviceBasePrice: e.target.value.replace(/[^0-9.]/g, '') });
     };
 
@@ -139,8 +151,10 @@ export const EditServiceModal = ({ onClose, onConfirm, service }) => {
                 <div className="modalTitle">Editar serviço</div>
 
                 <form onSubmit={handleSubmit}>
-                    <div className="">
+                    <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                         <TxtInput inputStyle={{ border: `2px solid ${Colors.c}`, fontSize: "16px" }} label={"Nome do serviço"} required={true} onChange={handleServiceNameInput} placeholder={"João Gabriel"} value={serviceInputValues.serviceName}/>
+
+                        <TxtInput inputStyle={{ border: `2px solid ${Colors.c}`, fontSize: "16px" }} label={"Descrição do serviço"} required={false} onChange={handleServiceDescriptionInput} placeholder={"Descrição do produto"} value={serviceInputValues.serviceDescription}/>
 
                         <TxtInput inputStyle={{ border: `2px solid ${Colors.c}`, fontSize: "16px" }} label={"Preço base"} required={true} onChange={handleServiceBasePriceInput} placeholder={"R$ 30,00"} value={serviceInputValues.serviceBasePrice ? "R$ "+serviceInputValues.serviceBasePrice : ""}/>
 

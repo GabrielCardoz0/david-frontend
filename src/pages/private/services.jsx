@@ -26,7 +26,7 @@ export const Services = () => {
     const [searchService, setSearchService] = useState("");
 
 
-    const componetesPage = [];
+    const componetesPage = [];  
     let i = 0;
     while(i < pages){
         componetesPage.push(<NumberPage key={i} value={i+1} selectedPage={selectedPage} onClick={setSelectedPage}/>);

@@ -1,7 +1,7 @@
 import { api } from "./api";
 
-export const NewServiceApi = async ({serviceName, serviceBasePrice, serviceColabPercent, serviceRepassPercent, serviceFrequency, genre}) => {
-    const payload = { serviceName, serviceBasePrice, serviceColabPercent, serviceRepassPercent, serviceFrequency, genre};
+export const NewServiceApi = async ({serviceName, serviceBasePrice, serviceColabPercent, serviceRepassPercent, serviceFrequency, genre, serviceDescription}) => {
+    const payload = { serviceName, serviceBasePrice, serviceColabPercent, serviceRepassPercent, serviceFrequency, genre, serviceDescription};
 
     try {
         const res = await api.post('/services', payload);

@@ -2,16 +2,20 @@ import { useLocation, useNavigate } from "react-router-dom";
 import FormDefaultContainer from "../../componets/formDefaultContainer";
 import { CheckInput, InputButton } from "../../componets/inputs";
 import SquareForm from "../../componets/squareForm";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FormsContext } from "../../contexts/formsContext";
 import { convertToMoney } from "../../utils";
 import { toast } from "react-toastify";
 import beautytagLogo from "../../assets/images/beautytag-logo.jpeg";
+import { DefaultModalContainer } from "../../componets/defaultModal/styles";
+import { AiOutlineClose, AiFillInfoCircle } from "react-icons/ai";
+
 
 export default function FormsServicesPage(params) {
     const { formServices, getFormServices, setFormServices, usersInfos } = useContext(FormsContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const [ showMoreInfo, setShowMoreInfo ] = useState({ visible: false, description: "" });
 
     function handleSelectFrequency(serviceId, frequencyId, value) {
         const servicesWithSelectedFrequencies = formServices.map(service => {
@@ -84,46 +88,16 @@ export default function FormsServicesPage(params) {
 
         {
             formServices.map(({services}, i) => {
-                /*
-                {
-    "id": 43,
-    "form_id": 21,
-    "service_id": 27,
-    "services": {
-        "id": 27,
-        "name": "Escova e Prancha",
-        "base_price": 50,
-        "colaborator_percent": 20,
-        "colaborator_value": 40,
-        "repass_percent": 25,
-        "repass_value": 8,
-        "profit": 32,
-        "genre": "feminino",
-        "created_at": "2024-02-19T00:00:00.000Z",
-        "updated_at": "2024-02-19T00:00:00.000Z",
-        "frequencies": [
-            {
-                "id": 43,
-                "frequency": "1x por mês",
-                "service_id": 27,
-                "created_at": "2024-02-19T00:00:00.000Z",
-                "updated_at": "2024-02-19T00:00:00.000Z",
-                "value": 1
-            },
-            {
-                "id": 44,
-                "frequency": " 2x por mês",
-                "service_id": 27,
-                "created_at": "2024-02-19T00:00:00.000Z",
-                "updated_at": "2024-02-19T00:00:00.000Z",
-                "value": 2
-            }
-        ]
-    }
-}
-                */
                 return(
                     <SquareForm key={services.id}>
+                        {showMoreInfo.visible && <DefaultModalContainer>
+                            <div style={{ backgroundColor: "#FFF", width: "70%", padding: "10px 5px 10px 5px", minHeight: "150px", borderRadius: "5px", position: "relative" }}>
+                                <p style={{ marginBottom: "5px", fontWeight: "600", fontSize:"14px" }}>Descrição do serviço</p>
+                                <p style={{ fontSize:"14px" }}>{showMoreInfo.description}</p>
+                                <AiOutlineClose className="closeButton" onClick={() => setShowMoreInfo({ visible: false, description: "" })}/>
+                            </div>
+                        </DefaultModalContainer>}
+
                         <h1 style={{ fontWeight: "600", fontSize:"14px" }}>{services.name}</h1>
                         <div className="spaceText"></div>
                         <div className="spaceText"></div>
@@ -132,6 +106,7 @@ export default function FormsServicesPage(params) {
                                 return (<CheckInput checked={!!fr.selected} key={fr.id} label={`${fr.frequency} - ${convertToMoney(services.colaborator_value * fr.value)}`} onChange={() => handleSelectFrequency(services.id, fr.id, !fr.selected)}/>);
                             })
                         }
+                        {services.description !== "" && <AiFillInfoCircle style={{ position: "absolute", right: 5, top: 5, color: "orange" }} onClick={() => setShowMoreInfo({ visible: true, description: services.description })}/>}
                     </SquareForm>
                 );
             })

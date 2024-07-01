@@ -16,6 +16,7 @@ const SquareContainer = styled.div`
     border-radius: 3px;
     border-top: ${({border}) => border == "true" ? `4px solid ${Colors.a}` : ""};
     margin-bottom: 20px;
+    position: relative;
 
     .spaceText{
         height: 5px;

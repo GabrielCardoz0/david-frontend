@@ -17,7 +17,7 @@ z-index: 10;
     background-color: ${Colors.wht};
     opacity: 1;
     width: 900px;
-    height: 500px;
+    height: 600px;
     position: fixed;
     z-index: 11;
     border-radius: 5px;
