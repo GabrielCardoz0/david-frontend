@@ -62,6 +62,7 @@ export const Forms = () => {
             if(res.success){
                 toast.success("Formulário deletado com sucesso.");
             } else {
+                console.log(res);
                 toast.error("Erro ao deletar formulário.")
             }
         } catch (error) {

@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import FormDefaultContainer from "../../componets/formDefaultContainer";
 import { CheckInput, InputButton } from "../../componets/inputs";
 import SquareForm from "../../componets/squareForm";
@@ -13,12 +13,18 @@ export default function FormsSubmitPage(params) {
     const { formServices, usersInfos } = useContext(FormsContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const [selectedServices, setSelectedServices] = useState(formServices.filter(({services}) => services.frequencies.filter(fr => !!fr.selected).length > 0) ?? []);
 
-    const selectedServices = formServices.filter(({services}) => services.frequencies.filter(fr => !!fr.selected).length > 0);
+    // const selectedServices = formServices.filter(({services}) => services.frequencies.filter(fr => !!fr.selected).length > 0);
 
-    let totalValue = 0;
+    
+    const totalValue = useMemo(() => {
+        let total = 0;
+        const t = selectedServices.forEach(({services}) => services.frequencies.map(fr => !!fr.selected ? total = total + (services.colaborator_value * fr.value) : null )?.length > 0)?.length > 0;
+        return total ?? 0
+    }, [selectedServices]);
 
-    const t = formServices.map(({services}) => services.frequencies.map(fr => !!fr.selected ? totalValue = totalValue + (services.colaborator_value * fr.value) : null ).length > 0).length > 0;
+    // const t = formServices.map(({services}) => services.frequencies.map(fr => !!fr.selected ? totalValue = totalValue + (services.colaborator_value * fr.value) : null ).length > 0).length > 0;
 
 
     function verifyColabInfos() {
@@ -70,6 +76,11 @@ export default function FormsSubmitPage(params) {
         }
     }
 
+    const handleDeleteSelectedService = (serviceId) => {
+        const newServices = selectedServices.filter(({services}) => services.id !== serviceId);
+        setSelectedServices(newServices);
+    }
+
 
     return(
         <FormDefaultContainer>
@@ -91,7 +102,7 @@ export default function FormsSubmitPage(params) {
                         <p style={{ fontSize:"12px" }}>Frequência selecionada:</p>
                         <div className="spaceText"></div>
                         <div className="spaceText"></div>
-                        <CheckInput label={`${services.frequencies.filter(fr => !!fr.selected)[0].frequency} - ${convertToMoney(services.frequencies.filter(fr => !!fr.selected)[0].value * services.colaborator_value)} `} defaultChecked={true}/>
+                        <CheckInput label={`${services.frequencies.filter(fr => !!fr.selected)[0].frequency} - ${convertToMoney(services.frequencies.filter(fr => !!fr.selected)[0].value * services.colaborator_value)} `} defaultChecked={true} onClick={() => handleDeleteSelectedService(services.id)}/>
                     </SquareForm>
                 );
             })}
