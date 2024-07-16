@@ -7,6 +7,7 @@ import FormDefaultContainer from "../../componets/formDefaultContainer";
 import { useContext, useState, useEffect } from "react";
 import { FormsContext } from "../../contexts/formsContext";
 import beautytagLogo from "../../assets/images/beautytag-logo.jpeg";
+import { toast } from "react-toastify";
 
 export default function FormsTermsConditionsPage() {
     const { formServices } = useContext(FormsContext);
@@ -17,6 +18,7 @@ export default function FormsTermsConditionsPage() {
 
     useEffect(() => {
         if(formServices.length < 1){
+            toast.error("Erro ao carregar os serviços, este formulário foi deletado ou está sem serviços.");
             return navigate(location.pathname.replace('/terms', ''));
         };
 

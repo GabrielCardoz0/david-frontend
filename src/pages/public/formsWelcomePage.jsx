@@ -22,7 +22,12 @@ export default function FormsWelcomePage(params) {
     }, []);
 
     const handleNavigate = () => {
-        // navigate(location.pathname+"/terms");
+        const nextPage = location.pathname+"/terms";
+        navigate(nextPage);
+        // setShowVideo({ show: true, count: showVideo.count });
+    }
+
+    const handleVideo = () => {
         setShowVideo({ show: true, count: showVideo.count });
     }
 
@@ -47,7 +52,7 @@ export default function FormsWelcomePage(params) {
 
                     <div style={{ height: "30px" }}></div>
 
-                    <InputButton text={"Acessar"} onClick={() => navigate(location.pathname+"/terms")} disabled={formServices.length < 0}/>
+                    <InputButton text={"Acessar"} onClick={handleNavigate} disabled={formServices.length < 0}/>
                     <AiOutlineClose style={{ position: "absolute", top: 5, right: 5 }} onClick={() => setShowVideo({ show: false, count: showVideo.count+1})}/>
                 </div>
             </div>}
@@ -58,7 +63,7 @@ export default function FormsWelcomePage(params) {
                     <span style={{ lineHeight: "1.5" }}>Cadastre-se e descubra descontos exclusivos em estética e bem-estar, especialmente para você.</span>
                 </div>
                 <img className="welcomeImage" src={beautytagLogo} alt=""/>
-                <InputButton text={"Cadastre-se"} onClick={handleNavigate} disabled={formServices.length < 0}/>
+                <InputButton text={"Cadastre-se"} onClick={handleVideo} disabled={formServices.length < 0}/>
             </div>
         </WelcomePageContainer>
     );

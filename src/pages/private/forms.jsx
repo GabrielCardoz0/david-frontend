@@ -27,10 +27,12 @@ export const Forms = () => {
             if(res.success){
                 setForms(res.data.forms);
             } else {
+                console.log(res);
                 toast.error("Erro ao listar formulários.")
             }
         } catch (error) {
-            console.log("Erro no try catch");
+            console.log(error);
+            // console.log("Erro no try catch");
         }
     };
 
@@ -156,7 +158,7 @@ export const Forms = () => {
                     </div>
 
                     <div className="formServices">
-                        {selectedForm.form_services.map(({services}) => {
+                        {selectedForm.form_services.length > 0 ? selectedForm.form_services.map(({services}) => {
                             return(
                             <div key={services.id} className="formServiceItem">
                                 <p>{services.name}</p>
@@ -164,7 +166,7 @@ export const Forms = () => {
                                 <p>Público: {services.genre}</p>
                             </div>
                             );
-                        })}
+                        }) : <span style={{ color: "red", fontWeight: "bold" }}>Este formulário está sem serviços!</span>}
                     </div>
                     </> : <p>Selecione um formulário para ver mais detalhes.</p>
                     }

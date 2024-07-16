@@ -32,7 +32,7 @@ export const Layout = () => {
         navigate("/login");
     };
 
-    console.log("1");
+    // console.log("1");
 
     return(
         <LayoutContainer>
