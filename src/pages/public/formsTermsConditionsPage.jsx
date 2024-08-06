@@ -43,7 +43,7 @@ export default function FormsTermsConditionsPage() {
                 <br/>
                 
                 <p style={{ fontSize: "12px", textAlign: "justify" }}>
-                    Este formulário é um serviço oferecido pela empresa David & Companhia.
+                    Este formulário é um serviço oferecido pela empresa Beautytag®.
                     Ao preencher este formulário, você concorda com os termos e condições
                     de uso da empresa, concordando em disponibilizar seus dados
                     pessoais para fins de marketing e comunicação, de acordo com a legislação vigente.
@@ -52,7 +52,7 @@ export default function FormsTermsConditionsPage() {
                 <br/>
 
                 <ul style={{ fontSize: "12px", textAlign: "justify" }}>
-                    <li>Ao utilizar esta ferramenta, você concorda em disponibilizar seus dados pessoais para a empresa David & Companhia.</li>
+                    <li>Ao utilizar esta ferramenta, você concorda em disponibilizar seus dados pessoais para a empresa Beautytag ®.</li>
                     <br/>
                     <li>A empresa poderá utilizar esses dados para fins de marketing e comunicação, de acordo com a legislação vigente.</li>
                     <br/>
