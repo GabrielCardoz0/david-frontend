@@ -34,7 +34,7 @@ export default function FormsTermsConditionsPage() {
                     <h1 style={{ fontWeight: "600", fontSize:"18px" }}>Cadastro do colaborador</h1>
                 </div>
                 <br/>
-                    <p style={{ fontSize:"12px" }}>Formulário para cadastro de planos personalizados com a Beauty TAG ®</p>
+                    <p style={{ fontSize:"12px" }}>Formulário para cadastro de planos personalizados com a Beautytag®</p>
             </SquareForm>
 
 
@@ -52,7 +52,7 @@ export default function FormsTermsConditionsPage() {
                 <br/>
 
                 <ul style={{ fontSize: "12px", textAlign: "justify" }}>
-                    <li>Ao utilizar esta ferramenta, você concorda em disponibilizar seus dados pessoais para a empresa Beautytag ®.</li>
+                    <li>Ao utilizar esta ferramenta, você concorda em disponibilizar seus dados pessoais para a empresa Beautytag®.</li>
                     <br/>
                     <li>A empresa poderá utilizar esses dados para fins de marketing e comunicação, de acordo com a legislação vigente.</li>
                     <br/>
