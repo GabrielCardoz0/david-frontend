@@ -12,11 +12,8 @@ import FormsServicesPage from "../pages/public/formsServicesPage";
 import FormsSubmitPage from "../pages/public/formsSubmitPage";
 import { useContext } from "react";
 import { UsersContext } from "../contexts/userContext";
-<<<<<<< HEAD
-=======
 import ChatPartners from "../pages/private/chatPartners";
 import ChatCheckins from "../pages/private/chatCheckins";
->>>>>>> 3e586fecf93bed95ec346097d78e902133aeb56e
 
 export default function Routers() {
     return(
@@ -33,11 +30,8 @@ export default function Routers() {
                 <Route path="services" element={<Services/>}/>
                 <Route path="colaborators" element={<Colaborators/>}/>
                 <Route path="forms" element={<Forms/>}/>
-<<<<<<< HEAD
-=======
                 <Route path="/chat/partners" element={<ChatPartners/>}/>
                 <Route path="/chat/checkins" element={<ChatCheckins/>}/>
->>>>>>> 3e586fecf93bed95ec346097d78e902133aeb56e
             </Route>
 
             <Route path="/forms/:formIdentify" element={<FormsWelcomePage/>}/>

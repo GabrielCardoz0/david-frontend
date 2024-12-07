@@ -49,8 +49,6 @@ export const Sidebar = () => {
             <DownloadBackupButton onClick={handleDownloadBackup}>
                 <span>Baixar backup</span>
             </DownloadBackupButton>
-<<<<<<< HEAD
-=======
 
 
             {/*<br></br>
@@ -64,7 +62,6 @@ export const Sidebar = () => {
             <SidebarRouteOption selected={selectedPage === "/chat/checkins"} onClick={() => handleChangePage("Chatbot", "/chat/checkins")}>
               <span>Check-ins</span>
             </SidebarRouteOption>
->>>>>>> 3e586fecf93bed95ec346097d78e902133aeb56e
             
         </SidebarContainer>
     );

@@ -22,11 +22,7 @@ export const GlobalContextProvider = ({ children }) => {
     
         getNewColabs();
     
-<<<<<<< HEAD
-        const intervalId = setInterval(getNewColabs, (1*60*1000));
-=======
         const intervalId = setInterval(getNewColabs, (60 * 1 * 1000));
->>>>>>> 3e586fecf93bed95ec346097d78e902133aeb56e
         return () => clearInterval(intervalId);
     }, []); 
 
@@ -40,8 +36,4 @@ export const GlobalContextProvider = ({ children }) => {
             {children}
         </GlobalContext.Provider>
     );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 3e586fecf93bed95ec346097d78e902133aeb56e
