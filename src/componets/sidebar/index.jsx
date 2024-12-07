@@ -49,6 +49,19 @@ export const Sidebar = () => {
             <DownloadBackupButton onClick={handleDownloadBackup}>
                 <span>Baixar backup</span>
             </DownloadBackupButton>
+
+
+            {/*<br></br>
+
+            <span style={{ color: "white", display: "flex", justifyContent: "center", width: "100%", fontWeight: "bold" }}>Area chat bot</span>
+
+            <SidebarRouteOption selected={selectedPage === "/chat/partners"} onClick={() => handleChangePage("Chatbot", "/chat/partners")}>
+              <span>Parceiros</span>
+            </SidebarRouteOption>*/}
+
+            <SidebarRouteOption selected={selectedPage === "/chat/checkins"} onClick={() => handleChangePage("Chatbot", "/chat/checkins")}>
+              <span>Check-ins</span>
+            </SidebarRouteOption>
             
         </SidebarContainer>
     );
