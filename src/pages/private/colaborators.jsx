@@ -101,6 +101,7 @@ export const Colaborators = () => {
                     );
                 })}
             </div> : <span>Não há novos registros por enquanto.</span>}
+<<<<<<< HEAD
 
             {/* {
 {
@@ -250,6 +251,8 @@ export const Colaborators = () => {
             {/* <div className="pages">
                 Olá
             </div> */}
+=======
+>>>>>>> 3e586fecf93bed95ec346097d78e902133aeb56e
             
         </ColaboratorsContainer >
     );
