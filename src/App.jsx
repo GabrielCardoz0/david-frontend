@@ -7,7 +7,10 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FormsContextProvider } from "./contexts/formsContext";
 import { GlobalContextProvider } from "./contexts/globalContext";
+<<<<<<< HEAD
+=======
 import './assets/index.css';
+>>>>>>> 3e586fecf93bed95ec346097d78e902133aeb56e
 
 function App() {
   return (
