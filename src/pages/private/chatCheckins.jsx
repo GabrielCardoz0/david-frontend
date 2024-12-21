@@ -4,8 +4,10 @@ import Colors from "../../assets/colors";
 import { useEffect, useMemo, useState } from "react";
 import { api } from "../../services/api";
 import dayjs from "dayjs";
-import { SearchInput } from "../../componets/inputs";
+import { InputButton, SearchInput } from "../../componets/inputs";
 import { toast } from "react-toastify";
+import { DefaultModalContainer } from "../../componets/defaultModal/styles";
+import { AiOutlineClose, AiFillPlayCircle, AiFillMinusCircle, AiFillCheckCircle } from "react-icons/ai";
 
 export default function ChatCheckins() {
   const limitPerPage = 20;
@@ -13,6 +15,8 @@ export default function ChatCheckins() {
   const [search, setSearch] = useState("");
   const [selectedPage, setSelectedPage] = useState(1);
   const [checkinsCount, setCheckinsCount] = useState(1);
+  const [showModal, setShowModal] = useState(false);
+  const [newCheckin, setNewCheckin] = useState({});
 
   const componentsPage = useMemo(() => {
     const totalPages = Math.ceil(checkinsCount / limitPerPage)
@@ -53,15 +57,100 @@ export default function ChatCheckins() {
     setSearch(e.target.value);
   }
 
+  const handleCloseModal = () => {
+    setShowModal(false);
+  }
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  }
+
+  const handleCreateCheckin = async (e) => {
+    try {
+      e.preventDefault();
+      await api.post("/api/v1/public/checkins", newCheckin);
+
+      toast.success("Check-in criado com sucesso.");
+      
+      handleCloseModal();
+
+      fetchCheckins(selectedPage, limitPerPage, search);
+
+      setNewCheckin({});
+    } catch (error) {
+      console.log(error);
+      toast.error("Erro ao criar check-in.");
+    }
+  }
+
+  const handleChangeCheckinStatus = async (action, hash) => {
+    try {
+      await api.put(`/api/v1/public/checkins/${action}`, {
+        checkin_hash: hash,
+        phone: "11999999999"
+      });
+
+      toast.success("Check-in alterado com sucesso.");
+
+      fetchCheckins(selectedPage, limitPerPage, search);
+    } catch (error) {
+      console.log(error);
+      toast.error("Erro ao alterar check-in.");
+    }
+  }
+
+  const handleChangeInput = (e) => {
+    setNewCheckin({...newCheckin, [e.target.name]: e.target.value});
+  }
+
   return (
     <PartnersContainer>
-      <div>
 
-        <form className="mb-4" onSubmit={(e) => handleSearch(e)}>
-            <SearchInput onChange={e => handleDigiteInput(e)}/>
-        </form>
+      {showModal && <DefaultModalContainer>
+        <div className="relative">
+          <AiOutlineClose className="absolute right-4 top-4 hover:text-red-500 cursor-pointer" onClick={handleCloseModal}/>
+          <form className="bg-white rounded-md flex flex-col px-16 py-8 gap-6" onSubmit={handleCreateCheckin}>
+            <div className="flex flex-col gap-1">
+              <p className="text-md font-semibold text-gray-600">Digite o número do cliente</p>
+              <input
+                type="text"
+                placeholder="+55 11 999999999"
+                name="colab_number"
+                className="border rounded-md p-2"
+                value={newCheckin.colab_number}
+                onChange={handleChangeInput}
+              />
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <p className="text-md font-semibold text-gray-600">Digite o serviço</p>
+              <input
+                type="text"
+                placeholder="Corte de cabelo"
+                name="service"
+                className="border rounded-md p-2"
+                value={newCheckin.service}
+                onChange={handleChangeInput}
+              />
+            </div>
+
+            <InputButton text="Adicionar" />
+          </form>
+        </div>
+
+      </DefaultModalContainer>}
+
+
+      <div>
+        <div className="w-full flex justify-between">
+          <form className="mb-4" onSubmit={(e) => handleSearch(e)}>
+              <SearchInput onChange={e => handleDigiteInput(e)}/>
+          </form>
+          <InputButton text="ADICIONAR" onClick={handleOpenModal} />
+        </div>
 
         <h1 className="pageName">Check-ins</h1>
+
         <div className="bottomLine"></div>
       </div>
 
@@ -74,11 +163,12 @@ export default function ChatCheckins() {
           <span className="font-medium text-base text-start p-0.5 border-collapse w-[15%] font-semibold">Data-criação</span>
           <span className="font-medium text-base text-start p-0.5 border-collapse w-[15%] font-semibold">Check-in</span>
           <span className="font-medium text-base text-start p-0.5 border-collapse w-[15%] font-semibold">Check-out</span>
+          <span className="font-medium text-base text-start p-0.5 border-collapse w-[15%] font-semibold">Ações</span>
         </div>
 
         {
           checkins.length > 0 
-          ? checkins.map((checkin) => <Checkin key={checkin.id} checkin={checkin} />)
+          ? checkins.map((checkin) => <Checkin key={checkin.id} checkin={checkin} handleChangeCheckinStatus={handleChangeCheckinStatus} />)
           : <span className="font-medium text-base text-start p-0.5 border-collapse w-full">Nenhum check-in encontrado</span>
         }
 
@@ -92,7 +182,9 @@ export default function ChatCheckins() {
   );
 };
 
-const Checkin = ({ checkin }) => {
+const Checkin = ({ checkin, handleChangeCheckinStatus }) => {
+
+
   return (
     <div className="flex w-full hover:bg-gray-200 cursor-default">
       <span className="font-medium text-base text-start p-0.5 border-collapse w-[15%]">{checkin.hash}</span>
@@ -102,6 +194,21 @@ const Checkin = ({ checkin }) => {
       <span className="font-medium text-base text-start p-0.5 border-collapse w-[15%]">{dayjs(checkin.created_at).format("DD.MM.YYYY HH:mm")}</span>
       <span className="font-medium text-base text-start p-0.5 border-collapse w-[15%]">{checkin?.start_at ? dayjs(checkin?.start_at).format("DD.MM.YYYY HH:mm") : "Não iniciado"}</span>
       <span className="font-medium text-base text-start p-0.5 border-collapse w-[15%]">{checkin?.end_at ? dayjs(checkin?.end_at).format("DD.MM.YYYY HH:mm") : "Não finalizado"}</span>
+      <div className="p-0.5 border-collapse w-[15%] flex gap-6">
+        <span
+          className="text-xl"
+          title={checkin?.start_at ? "Concluir check-in" : "Inciar check-in" }
+        >
+            {checkin?.start_at
+            ? <AiFillCheckCircle className="text-green-600 cursor-pointer" onClick={() => handleChangeCheckinStatus("end", checkin.hash)}/>
+            : <AiFillPlayCircle className="text-blue-600 cursor-pointer" onClick={() => handleChangeCheckinStatus("start", checkin.hash)}/>
+            }
+        </span>
+
+        <span className="text-xl" title="Cancelar checkin">
+          <AiFillMinusCircle className="text-red-600 cursor-pointer" onClick={() => handleChangeCheckinStatus("cancel", checkin.hash)}/>
+        </span>
+      </div>
     </div>
   )
 }
