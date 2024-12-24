@@ -156,9 +156,9 @@ export default function ChatCheckins() {
 
       <div className="flex flex-col w-full gap-2 mt-1">
         <div className="flex w-full">
-          <span className="font-medium text-base text-start p-0.5 border-collapse w-[15%] font-semibold">Código</span>
+          <span className="font-medium text-base text-start p-0.5 border-collapse w-[10%] font-semibold">Código</span>
           <span className="font-medium text-base text-start p-0.5 border-collapse w-[10%] font-semibold">status</span>
-          <span className="font-medium text-base text-start p-0.5 border-collapse w-[10%] font-semibold">telefone</span>
+          <span className="font-medium text-base text-start p-0.5 border-collapse w-[15%] font-semibold">telefone</span>
           <span className="font-medium text-base text-start p-0.5 border-collapse w-[25%] font-semibold">Serviço</span>
           <span className="font-medium text-base text-start p-0.5 border-collapse w-[15%] font-semibold">Data-criação</span>
           <span className="font-medium text-base text-start p-0.5 border-collapse w-[15%] font-semibold">Check-in</span>
@@ -187,9 +187,9 @@ const Checkin = ({ checkin, handleChangeCheckinStatus }) => {
 
   return (
     <div className="flex w-full hover:bg-gray-200 cursor-default">
-      <span className="font-medium text-base text-start p-0.5 border-collapse w-[15%]">{checkin.hash}</span>
+      <span className="font-medium text-base text-start p-0.5 border-collapse w-[10%]">{checkin.hash}</span>
       <span className="font-medium text-base text-start p-0.5 border-collapse w-[10%]">{checkin.status}</span>
-      <span className="font-medium text-base text-start p-0.5 border-collapse w-[10%]">{checkin.colab_number}</span>
+      <span className="font-medium text-base text-start p-0.5 border-collapse w-[15%]">{checkin.colab_number}</span>
       <span title={checkin.service ?? "Serviço não informado."} className="font-medium text-base text-start p-0.5 border-collapse w-[25%] truncate">{checkin.service ?? "Serviço não informado."}</span>
       <span className="font-medium text-base text-start p-0.5 border-collapse w-[15%]">{dayjs(checkin.created_at).format("DD.MM.YYYY HH:mm")}</span>
       <span className="font-medium text-base text-start p-0.5 border-collapse w-[15%]">{checkin?.start_at ? dayjs(checkin?.start_at).format("DD.MM.YYYY HH:mm") : "Não iniciado"}</span>
