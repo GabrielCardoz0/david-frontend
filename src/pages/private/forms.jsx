@@ -153,6 +153,10 @@ export const Forms = () => {
                             <p style={{ cursor: "pointer" }}>Copiar</p>
                             </CopyToClipboard>
 
+                            <CopyToClipboard text={window.location.href.replace("/forms", "") +"/public/services/"+ selectedForm.identify} onCopy={() => toast.success("Texto copiado para a área de transferência.")}>
+                            <p style={{ cursor: "pointer" }}>Copiar lista</p>
+                            </CopyToClipboard>
+
                             <p className="deleteForm" onClick={() => setShowDeleteModal(true)}>Deletar</p>
                         </div>
                     </div>
